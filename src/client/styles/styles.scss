@@ -1,0 +1,184 @@
+// Color variables
+$primary-color: #3498db; // Light blue
+$secondary-color: #2980b9; // Darker blue
+$background-color: #f1f2f6; // Light gray
+$text-color: #2c3e50; // Dark gray
+$input-background: #ffffff; // White
+$button-color: #1d72b8; // Slightly darker blue
+$button-hover: #155a8a; // Dark blue
+$error-color: #e74c3c; // Red
+$success-color: #2ecc71; // Green
+$gradient-background: linear-gradient(135deg, #74b9ff 0%, #a29bfe 100%); // Gradient background for a modern touch
+
+// Basic styles
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: $background-color;
+    color: $text-color;
+}
+
+// Main container
+#app {
+    max-width: 800px;
+    margin: 50px auto;
+    background: $gradient-background; // Apply gradient background
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+
+    &:hover {
+        transform: scale(1.03);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      
+    }
+}
+
+// Headings
+h1 {
+    text-align: center;
+    color: $primary-color;
+    font-weight: 700;
+    margin-bottom: 30px;
+    font-size: 32px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); // Stronger text shadow
+}
+
+// Form styles
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    width: 100%;
+}
+
+// Labels
+label {
+    font-weight: 500;
+    color: $secondary-color;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+// Inputs
+input {
+    padding: 12px;
+    border: 1px solid lighten($text-color, 20%);
+    border-radius: 8px;
+    background-color: $input-background;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+
+    &:focus {
+        border-color: $primary-color;
+        outline: none;
+        box-shadow: 0 0 8px rgba($primary-color, 0.2);
+        background-color: #ecf0f1; // Light background on focus
+    }
+}
+
+// Buttons
+button {
+    padding: 12px;
+    background-color: $button-color;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, box-shadow 0.2s ease;
+    margin-top: 15px;
+    width: 100%;
+
+    &:hover {
+        background-color: $button-hover;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); // Stronger shadow on hover
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+// Trip info section
+#trip-info {
+    margin-top: 30px;
+    width: 100%;
+}
+
+// Image mixin and styles
+@mixin trip-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px; // Rounded corners for images
+}
+
+.trip-img {
+    @include trip-img;
+
+    &:hover {
+        transform: scale(1.05);
+        filter: brightness(90%);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); // Enhanced shadow on hover
+    }
+}
+
+// Success and error messages
+.success-message {
+    color: $success-color;
+    font-size: 16px;
+    margin-bottom: 15px;
+    animation: fadeIn 1s ease-out;
+    background: rgba(0, 255, 0, 0.1); // Subtle background color
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.error-message {
+    color: $error-color;
+    font-size: 16px;
+    margin-bottom: 15px;
+    animation: shake 0.5s ease;
+    background: rgba(255, 0, 0, 0.1); // Subtle background color
+    padding: 10px;
+    border-radius: 8px;
+}
+
+// Keyframes for animations
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+    #app {
+        padding: 20px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
